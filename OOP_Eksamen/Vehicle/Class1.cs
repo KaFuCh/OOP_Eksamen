@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_Eksamen {
-    class Program {
-        static void Main(string[] args) {
-
-            Console.ReadKey();
-        }
+namespace Vehicle
+{
+    public class Class1
+    {
     }
 }
