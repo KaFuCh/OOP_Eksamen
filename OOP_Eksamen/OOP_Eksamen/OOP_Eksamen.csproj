@@ -41,15 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="People\Business\Business.cs" />
-    <Compile Include="People\Business\BusinessBuyer.cs" />
-    <Compile Include="People\Business\BusinessSeller.cs" />
-    <Compile Include="People\Person.cs" />
-    <Compile Include="People\Private\Private.cs" />
-    <Compile Include="People\Private\PrivateBuyer.cs" />
-    <Compile Include="People\Private\PrivateSeller.cs" />
+    <Compile Include="AuctionHouse.cs" />
+    <Compile Include="People\Buyer.cs" />
+    <Compile Include="People\IBusiness.cs" />
+    <Compile Include="People\BusinessBuyer.cs" />
+    <Compile Include="People\BusinessSeller.cs" />
+    <Compile Include="People\IPrivate.cs" />
+    <Compile Include="People\PrivateBuyer.cs" />
+    <Compile Include="People\PrivateSeller.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="People\Seller.cs" />
     <Compile Include="Vehicles\Bus.cs" />
     <Compile Include="Vehicles\Car.cs" />
     <Compile Include="Vehicles\CarCommercial.cs" />

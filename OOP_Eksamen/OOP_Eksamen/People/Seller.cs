@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OOP_Eksamen.People;
 
 namespace OOP_Eksamen {
     class Seller {
@@ -17,6 +18,10 @@ namespace OOP_Eksamen {
                 else
                     throw new ArgumentOutOfRangeException("Zip code", value, "The zip code is not valid");
             }
+        }
+
+        public event RecieveNotification (Vehicle v) {
+            
         }
     }
 }

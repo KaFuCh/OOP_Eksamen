@@ -32,6 +32,7 @@ namespace OOP_Eksamen {
         protected FuelType _fuel;
         protected string _regNumber;
         protected string _name;
+        protected decimal _minPrice;
         protected double _engineSize;
         protected double _kmPrLiter;
         protected uint _km;
@@ -39,6 +40,23 @@ namespace OOP_Eksamen {
         protected uint _initPrice;
         protected bool _towBar;
 
+        public Seller VehicleSeller {
+            get;
+            set;
+        }
+        public Dictionary<int, decimal> Bids = new Dictionary<int, decimal>();
+
+        public decimal MinPrice {
+            get {
+                return _minPrice;
+            }
+            set {
+                if(value > 0)
+                    _minPrice = value;
+                else
+                    throw new ArgumentOutOfRangeException("MinPrice", value, "Price must be positive.");
+            }
+        }
         public string Name {
             get {
                 return _name;

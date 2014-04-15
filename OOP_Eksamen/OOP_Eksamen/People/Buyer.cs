@@ -6,5 +6,6 @@ using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
     class Buyer {
+        
     }
 }
