@@ -5,8 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
-    public abstract class Business : Person{
-        private string _cvr;
+    public interface IBusiness{
+        
+        // PROPERTIES
+        protected string _cvr;
+        protected decimal _balance;
+
         public string CVR {
             get {
                 return _cvr;
@@ -19,7 +23,7 @@ namespace OOP_Eksamen {
             }
         }
 
-        public override double Balance {
+        public decimal Balance {
             set {
                 if(_balance + Credit - value >= 0)
                     _balance -= value;
@@ -28,9 +32,18 @@ namespace OOP_Eksamen {
             }
         }
 
-        public double Credit {
+        public decimal Credit {
             get;
             set;
+        }
+
+        // METHODS
+        public bool CheckID(string id) {
+            int res = 0;
+            for(int i = 0; i < id.Count() - 1; i++)
+                res += (id[id.Count() - i - 2] - '0') * ((i % 6) + 2);
+
+            return (11 - res % 11 == id[id.Count() - 1] - '0');
         }
     }
 }

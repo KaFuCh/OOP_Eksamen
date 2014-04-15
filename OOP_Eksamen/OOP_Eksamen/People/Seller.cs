@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
-    class PrivateSeller : Private{
+    class Seller {
         protected int _zipCode;
         public int ZipCode {
             get {
@@ -18,7 +18,5 @@ namespace OOP_Eksamen {
                     throw new ArgumentOutOfRangeException("Zip code", value, "The zip code is not valid");
             }
         }
-
-        //public void NotifySeller();
     }
 }

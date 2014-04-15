@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
-    class PrivateBuyer : Private {
+    class Buyer {
     }
 }
