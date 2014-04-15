@@ -46,5 +46,9 @@ namespace OOP_Eksamen {
                     throw new ArgumentOutOfRangeException("Licence", value, "The licence type is not valid for the vehicle type.");
             }
         }
+
+        public override string ToString() {
+            return "Commercial car: " + this.RegNumber + ", " + this.Name + ", " + this.EngineSize + "L " + this.Fuel;
+        }
     }
 }

@@ -30,6 +30,7 @@ namespace OOP_Eksamen {
             get;
             set;
         }
+
         public override LicenceType Licence {
             get {
                 return _licence;
@@ -40,6 +41,19 @@ namespace OOP_Eksamen {
                 else
                     throw new ArgumentOutOfRangeException("Licence", value, "The licence type is not valid for the vehicle type.");
             }
+        }
+
+        public override double EngineSize {
+            set {
+                if(value >= 4.2 && value <= 15)
+                    _engineSize = value;
+                else
+                    throw new ArgumentOutOfRangeException("EngineSize", value, "The engine size is not valid for the vehicle type.");
+            }
+        }
+
+        public override string ToString() {
+            return "Bus: " + this.RegNumber + ", " + this.Name + ", " + this.NoOfSeats + " seats, " + this.Height + " m";
         }
     }
 }

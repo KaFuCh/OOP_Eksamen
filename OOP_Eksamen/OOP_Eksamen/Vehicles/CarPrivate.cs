@@ -21,5 +21,9 @@ namespace OOP_Eksamen {
                     throw new ArgumentOutOfRangeException("Number of seats", value, "The number of seats is not valid for the vehicle type.");
             }
         }
+
+        public override string ToString() {
+            return "Private car: " + this.RegNumber + ", " + this.Name + ", " + this.EngineSize + "L " + this.Fuel;
+        }
     }
 }

@@ -34,5 +34,18 @@ namespace OOP_Eksamen {
                     throw new ArgumentOutOfRangeException("Licence", value, "The licence type is not valid for the vehicle type.");
             }
         }
+
+        public override string ToString() {
+            return "Truck: " + this.RegNumber + ", " + this.Name + ", " + this.LoadCapacity + " kg, " + this.Height + " m";
+        }
+
+        public override double EngineSize {
+            set {
+                if(value >= 4.2 && value <= 15)
+                    _engineSize = value;
+                else
+                    throw new ArgumentOutOfRangeException("EngineSize", value, "The engine size is not valid for the vehicle type.");
+            }
+        }
     }
 }

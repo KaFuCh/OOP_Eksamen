@@ -113,7 +113,7 @@ namespace OOP_Eksamen {
             }
         }
 
-        public double EngineSize {
+        public virtual double EngineSize {
             get {
                 return _engineSize;
             }
@@ -191,10 +191,6 @@ namespace OOP_Eksamen {
                 }
             }
             return res;
-        }
-
-        public override string ToString() {
-            return this._name;
         }
     }
 }

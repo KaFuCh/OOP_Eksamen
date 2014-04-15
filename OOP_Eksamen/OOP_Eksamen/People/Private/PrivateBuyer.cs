@@ -5,9 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
-    class Program {
-        static void Main(string[] args) {
-            Console.ReadKey();
-        }
+    class PrivateBuyer : Private {
     }
 }

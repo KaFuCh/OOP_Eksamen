@@ -42,12 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bus.cs" />
+    <Compile Include="Buyer.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="CarCommercial.cs" />
     <Compile Include="CarPrivate.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RV.cs" />
+    <Compile Include="Seller.cs" />
+    <Compile Include="SellerBusiness.cs" />
+    <Compile Include="SellerPrivate.cs" />
     <Compile Include="Truck.cs" />
     <Compile Include="Vehicle.cs" />
   </ItemGroup>
