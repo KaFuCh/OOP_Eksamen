@@ -24,16 +24,21 @@ namespace OOP_Eksamen {
 
         public bool RecieveBid(Buyer b, int auctionNo, decimal bid) {
             if(ForSale.ContainsKey(auctionNo) && b.reserveBalance(bid)) {
-                if(ForSale[auctionNo].Bids.Max(x => x.Value) < bid) {
+                if((!ForSale[auctionNo].Bids.Any() && ForSale[auctionNo].MinPrice <= bid) || (ForSale[auctionNo].MinPrice <= bid && ForSale[auctionNo].Bids.Max(x => x.Value) < bid)) {
                     ForSale[auctionNo].notify(ForSale[auctionNo], bid);
                 }
-                ForSale[auctionNo].Bids.Add(b.GetHashCode(), bid);
+                if(ForSale[auctionNo].Bids.ContainsKey(b.GetHashCode())) {
+                    ForSale[auctionNo].Bids[b.GetHashCode()] = bid;
+                } else {
+                    ForSale[auctionNo].Bids.Add(b.GetHashCode(), bid);
+                }
                 return true;
             }
             return false;
         }
 
         public bool AcceptBid(Seller s, int auctionNo) {
+            
             return false;
         }
     }

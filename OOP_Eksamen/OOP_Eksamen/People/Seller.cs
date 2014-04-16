@@ -20,7 +20,7 @@ namespace OOP_Eksamen {
         }
 
         public void RecieveNotification (Vehicle v, decimal bid) {
-            Console.WriteLine("An interesting bid has been placed on {0}, the bid is: {1}", v, bid);
+            Console.WriteLine("\nAn interesting bid has been placed on:\n{0}\nThe bid is: {1:C}", v, bid);
         }
     }
 }

@@ -53,7 +53,8 @@ namespace OOP_Eksamen {
         }
 
         public override string ToString() {
-            string output = string.Format("Commercial car: {0}, {1}", RegNumber, Name);
+            string output = "------------------------------";
+            output += string.Format("\nCommercial car: {0}, {1}", RegNumber, Name);
 
             if(this.Year != 0)
                 output += string.Format("\n  Made in " + Year);

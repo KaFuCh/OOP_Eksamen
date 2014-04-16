@@ -26,11 +26,15 @@ namespace OOP_Eksamen {
                 return _balance;
             }
             set {
-                if(_balance + Credit - value >= 0)
-                    _balance -= value;
-                else
-                    throw new ArgumentOutOfRangeException("Balance", value, "Insuffient funds");
+                _balance = value;
             }
+        }
+
+        public void pay(decimal cost) {
+            if(_balance + Credit - cost >= 0)
+                _balance -= cost;
+            else
+                throw new ArgumentOutOfRangeException("Balance", cost, "Insuffient funds");
         }
 
         public decimal Credit {
