@@ -7,7 +7,16 @@ using System.Threading.Tasks;
 namespace OOP_Eksamen {
     public class BusinessBuyer : Buyer, IBusiness {
         Business B = new Business(); //Simulated multiple inheritance
+
         //PROPERTIES
+        private decimal _reservedBalance;
+
+        public decimal ReservedBalance {
+            get {
+                return _reservedBalance;
+            }
+        }
+        
         public string CVR {
             get {
                 return B.CVR;
@@ -35,6 +44,15 @@ namespace OOP_Eksamen {
         //METHODS
         public bool CheckCVR(string s) {
             return B.CheckCVR(s);
+        }
+
+        public override bool reserveBalance(decimal bid) {
+            if(_reservedBalance + bid <= Balance && _reservedBalance + bid >= 0) {
+                _reservedBalance += bid;
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }

@@ -40,6 +40,11 @@ namespace OOP_Eksamen {
         protected uint _initPrice;
         protected bool _towBar;
 
+        public Action<Vehicle, decimal> notify {
+            get;
+            set;
+        }
+
         public Seller VehicleSeller {
             get;
             set;

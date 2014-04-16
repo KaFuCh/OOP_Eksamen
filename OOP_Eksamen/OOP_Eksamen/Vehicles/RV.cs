@@ -31,6 +31,11 @@ namespace OOP_Eksamen {
             set;
         }
 
+        public RV(string regNumber, string name) {
+            RegNumber = regNumber;
+            Name = name;
+        }
+
         public override LicenceType Licence {
             get {
                 return _licence;
@@ -66,7 +71,41 @@ namespace OOP_Eksamen {
         }
 
         public override string ToString() {
-            return "RV: " + this.RegNumber + ", " + this.Name + ", " + this.NoOfSeats + " seats, " + this.HeatingSystem + " heating";
+            string output = string.Format("RV: {0}, {1}", RegNumber, Name);
+
+            if(this.Year != 0)
+                output += string.Format("\n  Made in " + Year);
+            if(this.InitPrice != 0)
+                output += string.Format("\n  Initial price: " + InitPrice);
+            if(this.EngineSize != 0)
+                output += string.Format("\n  Engine size: " + EngineSize);
+            if(this.InitPrice != 0)
+                output += string.Format("\n  Initial price: " + InitPrice);
+            if(this.Km != 0)
+                output += string.Format("\n  Mileage: " + Km + " km");
+            if(this.KmPrLiter != 0)
+                output += string.Format("\n  Km/L: " + KmPrLiter);
+
+            if(this.NoOfSeats != 0)
+                output += string.Format("\n  Number of seats: " + NoOfSeats);
+            if(this.NoOfSleepSpots != 0)
+                output += string.Format("\n  Number of sleeping spots: " + NoOfSleepSpots);
+
+            output += string.Format("\n  Energy class: " + EnergyClass);
+            output += string.Format("\n  Licence required: " + Licence);
+            output += string.Format("\n  Fuel: " + Fuel);
+            output += string.Format("\n  Has towbar: " + TowBar);
+            output += string.Format("\n  Heating system uses " + this.HeatingSystem);
+            output += string.Format("\n  Has toilet: " + Toilet);
+
+            if(this.MinPrice != 0)
+                output += string.Format("\n  Minimum price: {0:C}", MinPrice);
+            if(this.VehicleSeller != null)
+                output += string.Format("\n  Seller: " + VehicleSeller);
+
+            output += "\n------------------------------";
+
+            return output;
         }
     }
 }

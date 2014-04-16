@@ -19,8 +19,8 @@ namespace OOP_Eksamen {
             }
         }
 
-        public void RecieveNotification (Vehicle v) {
-            Console.WriteLine("An interesting bid has been placed on {0}, the bid is: {1}", v, v.Bids.Max(x => x.Value));
+        public void RecieveNotification (Vehicle v, decimal bid) {
+            Console.WriteLine("An interesting bid has been placed on {0}, the bid is: {1}", v, bid);
         }
     }
 }

@@ -13,20 +13,21 @@ namespace OOP_Eksamen {
             return SetSale(v, s, minPrice, s.RecieveNotification);
         }
 
-        public int SetSale(Vehicle v, Seller s, decimal minPrice, Action<Vehicle> notificationMethod) {
+        public int SetSale(Vehicle v, Seller s, decimal minPrice, Action<Vehicle, decimal> notificationMethod) {
             v.MinPrice = minPrice;
             int AuctionNumber = v.RegNumber.GetHashCode();
             ForSale.Add(AuctionNumber, v);
             v.VehicleSeller = s;
+            v.notify = notificationMethod;
             return AuctionNumber;
         }
 
-        public bool ReciveBid(Buyer b, int auctionNo, decimal bid) {
-            if(ForSale.ContainsKey(auctionNo)) {
-                ForSale[auctionNo].Bids.Add(b.GetHashCode(), bid);
-                if(ForSale[auctionNo].Bids.Max(x => x.Value) < bid){
-                    
+        public bool RecieveBid(Buyer b, int auctionNo, decimal bid) {
+            if(ForSale.ContainsKey(auctionNo) && b.reserveBalance(bid)) {
+                if(ForSale[auctionNo].Bids.Max(x => x.Value) < bid) {
+                    ForSale[auctionNo].notify(ForSale[auctionNo], bid);
                 }
+                ForSale[auctionNo].Bids.Add(b.GetHashCode(), bid);
                 return true;
             }
             return false;

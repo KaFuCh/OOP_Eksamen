@@ -15,8 +15,12 @@ namespace OOP_Eksamen {
         }
 
         public int[] TrunkDimensions {
-            get;
-            set;
+            get {
+                return _trunkDimensions;
+            }
+            set {
+                _trunkDimensions = value;
+            }
         }
 
         public override LicenceType Licence {

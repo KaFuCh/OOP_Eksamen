@@ -23,6 +23,11 @@ namespace OOP_Eksamen {
             }
         }
 
+        public CarCommercial(string regNumber, string name) {
+            RegNumber = regNumber;
+            Name = name;
+        }
+
         public override int NoOfSeats {
             get {
                 return _noOfSeats;
@@ -48,7 +53,37 @@ namespace OOP_Eksamen {
         }
 
         public override string ToString() {
-            return "Commercial car: " + this.RegNumber + ", " + this.Name + ", " + this.EngineSize + "L " + this.Fuel;
+            string output = string.Format("Commercial car: {0}, {1}", RegNumber, Name);
+
+            if(this.Year != 0)
+                output += string.Format("\n  Made in " + Year);
+            if(this.InitPrice != 0)
+                output += string.Format("\n  Initial price: " + InitPrice);
+            if(this.EngineSize != 0)
+                output += string.Format("\n  Engine size: " + EngineSize);
+            if(this.Km != 0)
+                output += string.Format("\n  Mileage: " + Km + " km");
+            if(this.KmPrLiter != 0)
+                output += string.Format("\n  Km/L: " + KmPrLiter);
+            if(this.NoOfSeats != 0)
+                output += string.Format("\n  Number of seats: " + NoOfSeats);
+            if(this.TrunkDimensions[0] != 0 && this.TrunkDimensions[1] != 0 && this.TrunkDimensions[2] != 0)
+                output += string.Format("\n  Trunk dimentions: {0} m x {1} m x {2} m", TrunkDimensions[0], TrunkDimensions[1], TrunkDimensions[2]);
+
+            output += string.Format("\n  Energy class: " + EnergyClass);
+            output += string.Format("\n  Licence required: " + Licence);
+            output += string.Format("\n  Fuel: " + Fuel);
+            output += string.Format("\n  Has towbar: " + TowBar);
+            output += string.Format("\n  Has safetybar: " + SafetyBar);
+
+            if(this.MinPrice != 0)
+                output += string.Format("\n  Minimum price: {0:C}", MinPrice);
+            if(this.VehicleSeller != null)
+                output += string.Format("\n  Seller: " + VehicleSeller);
+
+            output += "\n------------------------------";
+
+            return output;
         }
     }
 }
