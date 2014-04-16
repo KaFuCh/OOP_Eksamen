@@ -42,11 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuctionHouse.cs" />
+    <Compile Include="People\Business.cs" />
     <Compile Include="People\Buyer.cs" />
     <Compile Include="People\IBusiness.cs" />
     <Compile Include="People\BusinessBuyer.cs" />
     <Compile Include="People\BusinessSeller.cs" />
     <Compile Include="People\IPrivate.cs" />
+    <Compile Include="People\Private.cs" />
     <Compile Include="People\PrivateBuyer.cs" />
     <Compile Include="People\PrivateSeller.cs" />
     <Compile Include="Program.cs" />

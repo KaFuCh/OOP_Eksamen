@@ -3,25 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OOP_Eksamen.People;
 
 namespace OOP_Eksamen {
-    class Seller {
+    public class Seller {
         protected int _zipCode;
         public int ZipCode {
             get {
                 return _zipCode;
             }
             set {
-                if(value > 999 && value < 9999)
+                if(value > 999 && value < 10000)
                     _zipCode = value;
                 else
                     throw new ArgumentOutOfRangeException("Zip code", value, "The zip code is not valid");
             }
         }
 
-        public event RecieveNotification (Vehicle v) {
-            
+        public void RecieveNotification (Vehicle v) {
+            Console.WriteLine("An interesting bid has been placed on {0}, the bid is: {1}", v, v.Bids.Max(x => x.Value));
         }
     }
 }
