@@ -1,0 +1,1 @@
+﻿ToString() skal overskrives for alle køretøjssubklasser
