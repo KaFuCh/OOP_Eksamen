@@ -16,7 +16,7 @@ namespace OOP_Eksamen {
                 B.CVR = value;
             }
         }
-        public decimal Balance{
+        public override decimal Balance{
             get{
                 return B.Balance;
             }

@@ -17,7 +17,7 @@ namespace OOP_Eksamen {
             }
         }
 
-        public decimal Balance {
+        public override decimal Balance {
             get {
                 return P.Balance;
             }

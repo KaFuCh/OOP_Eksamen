@@ -15,11 +15,13 @@ namespace OOP_Eksamen {
             dla.MinPrice = 3;
             int auNo = bælumAH.SetSale(dla, johnny, dla.MinPrice);
             BusinessBuyer jessie = new BusinessBuyer();
-            jessie.Balance = 100000000;
+            jessie.Balance = 3;
             bælumAH.RecieveBid(jessie, auNo, 2);
             bælumAH.RecieveBid(jessie, auNo, 3);
+            Console.WriteLine("Johnny's balance: {0}, Jessie's balance: {1}", johnny.Balance, jessie.Balance);
+            bælumAH.AcceptBid(johnny, jessie, auNo);
+            Console.WriteLine("Johnny's balance: {0}, Jessie's balance: {1}", johnny.Balance, jessie.Balance);
 
-            // Console.WriteLine("{0}", dla);
             Console.ReadLine();
         }
     }

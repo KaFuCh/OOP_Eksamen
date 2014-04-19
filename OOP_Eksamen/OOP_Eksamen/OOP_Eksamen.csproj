@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuctionHouse.cs" />
+    <Compile Include="InvalidRegNoException.cs" />
     <Compile Include="People\Business.cs" />
     <Compile Include="People\Buyer.cs" />
     <Compile Include="People\IBusiness.cs" />

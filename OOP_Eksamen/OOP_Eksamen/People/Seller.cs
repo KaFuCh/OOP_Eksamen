@@ -5,7 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
-    public class Seller {
+    public abstract class Seller {
+        public abstract decimal Balance {
+            get;
+            set;
+        }
         protected int _zipCode;
         public int ZipCode {
             get {

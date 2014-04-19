@@ -94,7 +94,7 @@ namespace OOP_Eksamen {
                 if(value.Substring(0, 2).All(char.IsLetter) && value.Substring(2, 5).All(char.IsNumber))
                     _regNumber = value;
                 else
-                    throw new Exception(); //SKAL LAVES CUSTOM
+                    throw new InvalidRegNoException(value);
             }
         }
 
@@ -168,6 +168,8 @@ namespace OOP_Eksamen {
                 return calcEnergyClass(1.0);
             }
         }
+
+        //METHODS
 
         protected EnergyClassType calcEnergyClass(double factor) {
             EnergyClassType res = new EnergyClassType();

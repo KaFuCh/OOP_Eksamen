@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
     public class AuctionHouse {
-        private decimal _balance;
-        Dictionary<int, Vehicle> ForSale = new Dictionary<int, Vehicle>();
+        //private decimal _balance;
+        public Dictionary<int, Vehicle> ForSale = new Dictionary<int, Vehicle>();
 
         public int SetSale(Vehicle v, Seller s, decimal minPrice) {
             return SetSale(v, s, minPrice, s.RecieveNotification);
@@ -23,7 +23,7 @@ namespace OOP_Eksamen {
         }
 
         public bool RecieveBid(Buyer b, int auctionNo, decimal bid) {
-            if(ForSale.ContainsKey(auctionNo) && b.reserveBalance(bid)) {
+            if(ForSale.ContainsKey(auctionNo) && b.reserveBalance(bid, auctionNo, this)) {
                 if((!ForSale[auctionNo].Bids.Any() && ForSale[auctionNo].MinPrice <= bid) || (ForSale[auctionNo].MinPrice <= bid && ForSale[auctionNo].Bids.Max(x => x.Value) < bid)) {
                     ForSale[auctionNo].notify(ForSale[auctionNo], bid);
                 }
@@ -37,9 +37,12 @@ namespace OOP_Eksamen {
             return false;
         }
 
-        public bool AcceptBid(Seller s, int auctionNo) {
+        public void AcceptBid(Seller s, Buyer b, int auctionNo) {
+            int key = b.GetHashCode();
+            b.Balance -= ForSale[auctionNo].Bids[key];
+            b.ReservedBalance -= ForSale[auctionNo].Bids[key];
+            s.Balance += ForSale[auctionNo].Bids[key];
             ForSale.Remove(auctionNo);
-            return false;
         }
     }
 }
