@@ -38,7 +38,7 @@ namespace OOP_Eksamen {
         }
 
         public bool AcceptBid(Seller s, int auctionNo) {
-            
+            ForSale.Remove(auctionNo);
             return false;
         }
     }
