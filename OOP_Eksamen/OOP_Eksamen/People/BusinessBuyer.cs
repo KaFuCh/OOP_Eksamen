@@ -57,7 +57,7 @@ namespace OOP_Eksamen {
         public override bool reserveBalance(decimal bid, int auctionNo, AuctionHouse AH) {
             int key = base.GetHashCode();
             if(AH.ForSale[auctionNo].Bids.ContainsKey(key)) { //Has the buyer already bid on the vehicle?
-                if(bid > AH.ForSale[auctionNo].Bids[key] && bid + _reservedBalance - AH.ForSale[auctionNo].Bids[key] <= Balance) {
+                if(bid > AH.ForSale[auctionNo].Bids[key] && bid + _reservedBalance - AH.ForSale[auctionNo].Bids[key] <= Balance + Credit) {
                     _reservedBalance += bid - AH.ForSale[auctionNo].Bids[key];
                     return true;
                 }
@@ -65,7 +65,7 @@ namespace OOP_Eksamen {
                     return false;
             }
             else {
-                if(_reservedBalance + bid <= Balance && _reservedBalance + bid >= 0) {
+                if(_reservedBalance + bid <= Balance + Credit && _reservedBalance + bid >= 0) {
                     _reservedBalance += bid;
                     return true;
                 }

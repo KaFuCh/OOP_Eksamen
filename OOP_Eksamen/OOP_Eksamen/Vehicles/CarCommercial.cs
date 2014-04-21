@@ -92,8 +92,6 @@ namespace OOP_Eksamen {
 
             if(this.MinPrice != 0)
                 output += string.Format("\n  Minimum price: {0:C}", MinPrice);
-            if(this.VehicleSeller != null)
-                output += string.Format("\n  Seller: " + VehicleSeller);
 
             output += "\n------------------------------";
 

@@ -32,8 +32,10 @@ namespace OOP_Eksamen {
         }
 
         public Bus(string inputName, string inputRegNumber, int inputYear,
-                       LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice)
+                       LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice,
+                       uint inputWeight)
             : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
+            Weight = inputWeight;
         }
 
         public override LicenceType Licence {
@@ -106,8 +108,6 @@ namespace OOP_Eksamen {
 
             if(this.MinPrice != 0)
                 output += string.Format("\n  Minimum price: {0:C}", MinPrice);
-            if(this.VehicleSeller != null)
-                output += string.Format("\n  Seller: " + VehicleSeller);
 
             output += "\n------------------------------";
 

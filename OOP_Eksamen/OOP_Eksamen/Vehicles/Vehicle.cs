@@ -49,6 +49,7 @@ namespace OOP_Eksamen {
             set;
         }
         public Dictionary<int, decimal> Bids = new Dictionary<int, decimal>();
+        public List<Buyer> Biders = new List<Buyer>();
 
         public decimal MinPrice {
             get {

@@ -37,17 +37,20 @@ namespace OOP_Eksamen {
                 } else {
                     ForSale[auctionNo].Bids.Add(b.GetHashCode(), bid);
                 }
+                ForSale[auctionNo].Biders.Add(b);
                 return true;
             }
             return false;
         }
 
-        public bool AcceptBid(Buyer b, int auctionNo) {
+        public bool AcceptBid(Buyer inputBuyer, int auctionNo) {
             if(ForSale.ContainsKey(auctionNo)) {
-                int key = b.GetHashCode();
+                int key = inputBuyer.GetHashCode();
                 int fee = 0;
-                b.Balance -= ForSale[auctionNo].Bids[key];
-                b.ReservedBalance -= ForSale[auctionNo].Bids[key];
+                inputBuyer.Balance -= ForSale[auctionNo].Bids[key];
+                foreach(Buyer b in ForSale[auctionNo].Biders) {
+                    b.ReservedBalance -= ForSale[auctionNo].Bids[b.GetHashCode()];
+                }
 
                 if(ForSale[auctionNo].Bids[key] < 10000)
                     fee = 1900;

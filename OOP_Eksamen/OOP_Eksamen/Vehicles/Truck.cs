@@ -14,7 +14,7 @@ namespace OOP_Eksamen {
             get;
             set;
         }
-        public int Weight {
+        public uint Weight {
             get;
             set;
         }
@@ -24,8 +24,10 @@ namespace OOP_Eksamen {
         }
 
         public Truck(string inputName, string inputRegNumber, int inputYear,
-                     LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice)
+                     LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice,
+                     uint inputWeight)
             : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
+            Weight = inputWeight;
         }
 
         public override LicenceType Licence {
@@ -41,7 +43,9 @@ namespace OOP_Eksamen {
         }
 
         public override string ToString() {
-            string output = string.Format("Truck: {0}, {1}", RegNumber, Name);
+            string output = "------------------------------";
+
+            output += string.Format("\nTruck: {0}, {1}", RegNumber, Name);
 
             if(this.Year != 0)
                 output += string.Format("\n  Made in " + Year);
@@ -70,8 +74,6 @@ namespace OOP_Eksamen {
 
             if(this.MinPrice != 0)
                 output += string.Format("\n  Minimum price: {0:C}", MinPrice);
-            if(this.VehicleSeller != null)
-                output += string.Format("\n  Seller: " + VehicleSeller);
 
             output += "\n------------------------------";
 

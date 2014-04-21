@@ -73,7 +73,9 @@ namespace OOP_Eksamen {
         }
 
         public override string ToString() {
-            string output = string.Format("RV: {0}, {1}", RegNumber, Name);
+            string output = "------------------------------";
+
+            output += string.Format("\nRV: {0}, {1}", RegNumber, Name);
 
             if(this.Year != 0)
                 output += string.Format("\n  Made in " + Year);
@@ -102,8 +104,6 @@ namespace OOP_Eksamen {
 
             if(this.MinPrice != 0)
                 output += string.Format("\n  Minimum price: {0:C}", MinPrice);
-            if(this.VehicleSeller != null)
-                output += string.Format("\n  Seller: " + VehicleSeller);
 
             output += "\n------------------------------";
 
