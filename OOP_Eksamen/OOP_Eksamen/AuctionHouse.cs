@@ -37,12 +37,44 @@ namespace OOP_Eksamen {
             return false;
         }
 
-        public void AcceptBid(Seller s, Buyer b, int auctionNo) {
-            int key = b.GetHashCode();
-            b.Balance -= ForSale[auctionNo].Bids[key];
-            b.ReservedBalance -= ForSale[auctionNo].Bids[key];
-            s.Balance += ForSale[auctionNo].Bids[key];
-            ForSale.Remove(auctionNo);
+        public bool AcceptBid(Seller s, Buyer b, int auctionNo) {
+            if(ForSale.ContainsKey(auctionNo)) {
+                int key = b.GetHashCode();
+                b.Balance -= ForSale[auctionNo].Bids[key];
+                b.ReservedBalance -= ForSale[auctionNo].Bids[key];
+                s.Balance += ForSale[auctionNo].Bids[key];
+                ForSale.Remove(auctionNo);
+                return true;
+            }
+            return false;
+        }
+
+        public List<Vehicle> SearchString(string searchKey) {
+            return ForSale.Values.Where(x => x.Name.Contains(searchKey)).ToList();
+        }
+
+        public List<Vehicle> SearchSeatsAndToilets(uint minSeats, bool hasToilet) {
+            List<Vehicle> returnList = ForSale.Values.OfType<RV>().Where(x => x.Toilet == hasToilet && x.NoOfSeats >= minSeats).ToList<Vehicle>();
+            returnList.AddRange(ForSale.Values.OfType<Bus>().Where(x => x.Toilet == hasToilet && x.NoOfSeats >= minSeats).ToList<Vehicle>());
+            return returnList;
+        }
+
+        public List<Vehicle> SearchLicence(int maxWeight) {
+            List<Vehicle> returnList = ForSale.Values.OfType<Truck>().Where(x => x.Weight <= maxWeight).ToList<Vehicle>();
+            returnList.AddRange(ForSale.Values.OfType<Bus>().Where(x => x.Weight <= maxWeight).ToList<Vehicle>());
+            return returnList;
+        }
+
+        public List<Vehicle> SearchPrivateCar(int maxKm, decimal maxPrice) {
+            return ForSale.Values.OfType<CarPrivate>().Where(x => x.MinPrice <= maxPrice && x.Km <= maxKm).OrderBy(x => x.Km).ToList<Vehicle>();
+        }
+
+        public List<Vehicle> SearchZipCode(int zipCodeRange, int initZipCode) {
+            return ForSale.Values.Where(x => x.VehicleSeller.ZipCode <= initZipCode + initZipCode && x.VehicleSeller.ZipCode >= initZipCode - zipCodeRange).ToList();
+        }
+
+        public EnergyClassType avrageEnergyClassType() {
+            return (EnergyClassType)Math.Round(ForSale.Values.Average(x => (int)x.EnergyClass));
         }
     }
 }

@@ -5,6 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
+    public enum EnergyClassType {
+        A,
+        B,
+        C,
+        D
+    }
     public abstract class Vehicle {
         public enum LicenceType {
             A,
@@ -19,13 +25,6 @@ namespace OOP_Eksamen {
         public enum FuelType {
             Petrol,
             Diesel
-        }
-
-        public enum EnergyClassType {
-            A,
-            B,
-            C,
-            D
         }
 
         protected LicenceType _licence;
