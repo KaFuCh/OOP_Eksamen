@@ -31,9 +31,9 @@ namespace OOP_Eksamen {
             set;
         }
 
-        public Bus(string regNumber, string name) {
-            RegNumber = regNumber;
-            Name = name;
+        public Bus(string inputName, string inputRegNumber, int inputYear,
+                       LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice)
+            : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
         }
 
         public override LicenceType Licence {
@@ -42,7 +42,7 @@ namespace OOP_Eksamen {
             }
             set {
                 if(value == LicenceType.DE || (value == LicenceType.D && !_towBar))
-                    Licence = value;
+                    _licence = value;
                 else
                     throw new ArgumentOutOfRangeException("Licence", value, "The licence type is not valid for the vehicle type.");
             }

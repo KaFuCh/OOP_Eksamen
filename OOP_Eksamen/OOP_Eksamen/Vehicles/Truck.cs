@@ -23,9 +23,9 @@ namespace OOP_Eksamen {
             set;
         }
 
-        public Truck(string regNumber, string name) {
-            RegNumber = regNumber;
-            Name = name;
+        public Truck(string inputName, string inputRegNumber, int inputYear,
+                     LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice)
+            : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
         }
 
         public override LicenceType Licence {

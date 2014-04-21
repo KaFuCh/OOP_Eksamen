@@ -11,9 +11,9 @@ namespace OOP_Eksamen {
             set;
         }
 
-        public CarPrivate(string regNumber, string name) {
-            RegNumber = regNumber;
-            Name = name;
+        public CarPrivate(string inputName, string inputRegNumber, int inputYear,
+                          LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice)
+            : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
         }
 
         public override int NoOfSeats{

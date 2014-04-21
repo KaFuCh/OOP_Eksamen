@@ -15,12 +15,11 @@ namespace OOP_Eksamen {
             }
         }
 
-        public int SetSale(Vehicle v, Seller s, decimal minPrice) {
-            return SetSale(v, s, minPrice, s.RecieveNotification);
+        public int SetSale(Vehicle v, Seller s) {
+            return SetSale(v, s, s.RecieveNotification);
         }
 
-        public int SetSale(Vehicle v, Seller s, decimal minPrice, Action<Vehicle, decimal> notificationMethod) {
-            v.MinPrice = minPrice;
+        public int SetSale(Vehicle v, Seller s, Action<Vehicle, decimal> notificationMethod) {
             int AuctionNumber = v.RegNumber.GetHashCode();
             ForSale.Add(AuctionNumber, v);
             v.VehicleSeller = s;

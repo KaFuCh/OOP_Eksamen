@@ -101,9 +101,6 @@ namespace OOP_Eksamen {
             get {
                 return _year;
             }
-            set {
-                _year = value;
-            }
         }
 
         public uint InitPrice {
@@ -166,6 +163,16 @@ namespace OOP_Eksamen {
             get {
                 return calcEnergyClass(1.0);
             }
+        }
+        //CONSTRUCTOR
+        public Vehicle(string inputName, string inputRegNumber, int inputYear,
+                       LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice) {
+            Name = inputName;
+            RegNumber = inputRegNumber;
+            _year = inputYear;
+            Licence = inputLicence;
+            Fuel = inputFuel;
+            MinPrice = inputMinPrice;
         }
 
         //METHODS

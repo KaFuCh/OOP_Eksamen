@@ -22,10 +22,9 @@ namespace OOP_Eksamen {
                     _loadCapacity = value;
             }
         }
-
-        public CarCommercial(string regNumber, string name) {
-            RegNumber = regNumber;
-            Name = name;
+        public CarCommercial(string inputName, string inputRegNumber, int inputYear,
+               LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice)
+            : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
         }
 
         public override int NoOfSeats {

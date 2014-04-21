@@ -23,6 +23,11 @@ namespace OOP_Eksamen {
             }
         }
 
+        public Car(string inputName, string inputRegNumber, int inputYear,
+                   LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice)
+            : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
+        }
+
         public override LicenceType Licence {
             get {
                 return _licence;
