@@ -7,36 +7,38 @@ using System.Threading.Tasks;
 namespace OOP_Eksamen {
     class Program {
         static void Main(string[] args) {
-            AuctionHouse bælumAH = new AuctionHouse();
-            CarPrivate dla = new CarPrivate("AB11111", "Bil1");
-            CarPrivate bla = new CarPrivate("AB22222", "Bil2");
-            CarPrivate ala = new CarPrivate("AB33333", "Bil3");
+            if(args.Any() && args[0] == "--test") {
+                testExample();
+            }
+        }
 
-            BusinessSeller johnny = new BusinessSeller();
-            johnny.ZipCode = 5000;
-            PrivateSeller BlackBetty = new PrivateSeller();
-            BlackBetty.ZipCode = 1000;
+        public static void testExample() {
+            AuctionHouse testAuctionHouse = new AuctionHouse();
+            List<Seller> sellers = new List<Seller> {new BusinessSeller("12629885", 8300, 1000000, 500000), new PrivateSeller("0104931839", 9000, 100000)};
+            List<Buyer> buyers = new List<Buyer>{new BusinessBuyer("48570658", 200000, 200000), new PrivateBuyer("0606941137", 40000)};
 
-            dla.Fuel = Vehicle.FuelType.Petrol;
-            dla.KmPrLiter = 5;
-            dla.Year = 1000;
-            Console.WriteLine(dla.EnergyClass);
+            int testBusKey = testAuctionHouse.SetSale(new Bus("AB87232", "Mercedes Benz Travego"), sellers[0], 120000);
+            int testCarPrivateKey = testAuctionHouse.SetSale(new CarPrivate("SD82738", "Audi A2"), sellers[1], 32000);
+            int testCarCommercial = testAuctionHouse.SetSale(new CarCommercial("HK65434", "Mercedes Sprinter"), sellers[0], 25000);
+            int testRVKey = testAuctionHouse.SetSale(new RV("DK34587", "Carado A241"), sellers[1], 280000);
+            int testTruckKey = testAuctionHouse.SetSale(new Truck("HF39847", "Scania L80"), sellers[0], 500000);
 
-            bla.Fuel = Vehicle.FuelType.Petrol;
-            bla.KmPrLiter = 10;
-            bla.Year = 2005;
-            Console.WriteLine(bla.EnergyClass);
+            foreach(Vehicle v in testAuctionHouse.SearchString("Mercedes")) {
+                Console.WriteLine(v);
+            }
 
-            ala.Fuel = Vehicle.FuelType.Petrol;
-            ala.KmPrLiter = 10;
-            ala.Year = 2005;
-            Console.WriteLine(ala.EnergyClass);
+            foreach(Vehicle v in testAuctionHouse.SearchLicence(1)) {
+                Console.WriteLine(v);
+            }
 
-            bælumAH.SetSale(dla, BlackBetty, 1);
-            bælumAH.SetSale(bla, johnny, 1);
-            bælumAH.SetSale(ala, johnny, 1);
+            foreach(Vehicle v in testAuctionHouse.SearchPrivateCar(0, 32000)) {
+                Console.WriteLine(v);
+            }
 
-            Console.WriteLine("\n" + bælumAH.avrageEnergyClassType());
+            testAuctionHouse.RecieveBid(buyers[0], testBusKey, 120000);
+            testAuctionHouse.AcceptBid(buyers[0], testBusKey);
+
+            Console.WriteLine(testAuctionHouse.Balance);
 
             Console.ReadLine();
         }

@@ -32,6 +32,13 @@ namespace OOP_Eksamen {
                 B.Credit = value;
             }
         }
+
+        public BusinessSeller(string inputCVR, int inputZipCode, decimal inputBalance, decimal inputCredit) : base(inputZipCode) {
+            CVR = inputCVR;
+            ZipCode = inputZipCode;
+            Balance = inputBalance;
+        }
+
         //METHODS
         public bool CheckCVR(string s) { 
             return B.CheckCVR(s);

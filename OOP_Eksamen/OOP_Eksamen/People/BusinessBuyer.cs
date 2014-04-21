@@ -44,6 +44,11 @@ namespace OOP_Eksamen {
                 B.Credit = value;
             }
         }
+        public BusinessBuyer(string inputCVR, decimal inputBalance, decimal inputCredit) : base(inputBalance) {
+            CVR = inputCVR;
+            Credit = inputCredit;
+        }
+
         //METHODS
         public bool CheckCVR(string s) {
             return B.CheckCVR(s);

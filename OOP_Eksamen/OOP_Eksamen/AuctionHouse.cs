@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
     public class AuctionHouse {
-        //private decimal _balance;
+        private decimal _balance;
         public Dictionary<int, Vehicle> ForSale = new Dictionary<int, Vehicle>();
+
+        public decimal Balance {
+            get {
+                return _balance;
+            }
+        }
 
         public int SetSale(Vehicle v, Seller s, decimal minPrice) {
             return SetSale(v, s, minPrice, s.RecieveNotification);
@@ -37,12 +43,30 @@ namespace OOP_Eksamen {
             return false;
         }
 
-        public bool AcceptBid(Seller s, Buyer b, int auctionNo) {
+        public bool AcceptBid(Buyer b, int auctionNo) {
             if(ForSale.ContainsKey(auctionNo)) {
                 int key = b.GetHashCode();
+                int fee = 0;
                 b.Balance -= ForSale[auctionNo].Bids[key];
                 b.ReservedBalance -= ForSale[auctionNo].Bids[key];
-                s.Balance += ForSale[auctionNo].Bids[key];
+
+                if(ForSale[auctionNo].Bids[key] < 10000)
+                    fee = 1900;
+                else if(ForSale[auctionNo].Bids[key] < 50000)
+                    fee = 2250;
+                else if(ForSale[auctionNo].Bids[key] < 100000)
+                    fee = 2550;
+                else if(ForSale[auctionNo].Bids[key] < 150000)
+                    fee = 2850;
+                else if(ForSale[auctionNo].Bids[key] < 200000)
+                    fee = 3400;
+                else if(ForSale[auctionNo].Bids[key] < 300000)
+                    fee = 3700;
+                else
+                    fee = 4400;
+
+                _balance += fee;
+                ForSale[auctionNo].VehicleSeller.Balance += ForSale[auctionNo].Bids[key] - fee;
                 ForSale.Remove(auctionNo);
                 return true;
             }

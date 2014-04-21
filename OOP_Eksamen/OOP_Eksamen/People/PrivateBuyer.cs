@@ -35,6 +35,10 @@ namespace OOP_Eksamen {
                 P.Balance = value;
             }
         }
+        public PrivateBuyer(string inputCPR, decimal inputBalance) : base(inputBalance) {
+            CPR = inputCPR;
+        }
+
         public bool CheckCPR(string cpr){
             return P.CheckCPR(cpr);
         }

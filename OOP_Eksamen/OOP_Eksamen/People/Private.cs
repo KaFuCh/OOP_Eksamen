@@ -27,14 +27,18 @@ namespace OOP_Eksamen {
                 return _balance;
             }
             set {
-                if(_balance - value >= 0)
-                    _balance -= value;
-                else
-                    throw new ArgumentOutOfRangeException("Balance", value, "Insuffient funds");
+                _balance = value;
             }
         }
 
         //METHODS
+        public void pay(decimal cost) {
+            if(_balance - cost >= 0)
+                _balance -= cost;
+            else
+                throw new ArgumentOutOfRangeException("Balance", cost, "Insuffient funds");
+        }
+
         public bool CheckCPR(string cpr) {
             int res = 0;
             for(int i = 0; i < cpr.Count() - 1; i++)

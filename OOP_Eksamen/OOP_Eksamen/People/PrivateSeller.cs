@@ -26,6 +26,11 @@ namespace OOP_Eksamen {
             }
         }
 
+        public PrivateSeller(string inputCPR, int inputZipCode, decimal inputBalance) : base(inputZipCode) {
+            CPR = inputCPR;
+            Balance = inputBalance;
+        }
+
         //METHODS
         public bool CheckCPR(string cpr) {
             return P.CheckCPR(cpr);

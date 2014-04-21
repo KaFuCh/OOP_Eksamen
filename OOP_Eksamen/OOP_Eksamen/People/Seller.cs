@@ -10,6 +10,7 @@ namespace OOP_Eksamen {
             get;
             set;
         }
+
         protected int _zipCode;
         public int ZipCode {
             get {
@@ -21,6 +22,10 @@ namespace OOP_Eksamen {
                 else
                     throw new ArgumentOutOfRangeException("Zip code", value, "The zip code is not valid");
             }
+        }
+
+        public Seller(int inputZipCode) {
+            ZipCode = inputZipCode;
         }
 
         public void RecieveNotification (Vehicle v, decimal bid) {
