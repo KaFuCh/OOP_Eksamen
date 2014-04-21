@@ -78,6 +78,18 @@ namespace OOP_Eksamen {
             return output;
         }
 
+        public override Vehicle.FuelType Fuel {
+            get {
+                return _fuel;
+            }
+            set {
+                if(value == FuelType.Diesel)
+                    _fuel = value;
+                else
+                    throw new ArgumentOutOfRangeException("Fuel", value, "Trucks must be fueled by diesel");
+            }
+        }
+
         public override double EngineSize {
             set {
                 if(value >= 4.2 && value <= 15)

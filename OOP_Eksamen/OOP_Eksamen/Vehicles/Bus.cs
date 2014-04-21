@@ -57,6 +57,18 @@ namespace OOP_Eksamen {
             }
         }
 
+        public override Vehicle.FuelType Fuel {
+            get {
+                return _fuel;
+            }
+            set {
+                if(value == FuelType.Diesel)
+                    _fuel = value;
+                else
+                    throw new ArgumentOutOfRangeException("Fuel", value, "Busses must be fueled by diesel");
+            }
+        }
+
         public override string ToString() {
             string output = "------------------------------";
 

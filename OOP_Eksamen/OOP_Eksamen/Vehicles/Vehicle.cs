@@ -114,7 +114,7 @@ namespace OOP_Eksamen {
             }
         }
 
-        public bool TowBar {
+        public virtual bool TowBar {
             get {
                 return _towBar;
             }
@@ -150,7 +150,7 @@ namespace OOP_Eksamen {
             }
         }
 
-        public FuelType Fuel {
+        public virtual FuelType Fuel {
             get {
                 return _fuel;
             }

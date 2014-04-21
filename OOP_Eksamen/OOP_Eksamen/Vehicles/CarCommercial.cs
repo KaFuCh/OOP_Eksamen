@@ -17,14 +17,28 @@ namespace OOP_Eksamen {
             }
             set {
                 if(_licence == LicenceType.B && value > 750)
-                    throw new ArgumentOutOfRangeException("Load capacity", value, "Incorrect load capacity or licence type.");
+                    throw new ArgumentOutOfRangeException("LoadCapacity", value, "Incorrect load capacity or licence type.");
                 else
                     _loadCapacity = value;
             }
         }
         public CarCommercial(string inputName, string inputRegNumber, int inputYear,
-               LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice)
+                             LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice)
             : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
+            _towBar = true;
+        }
+
+        public override bool TowBar {
+            get {
+                return _towBar;
+            }
+            set {
+                if(value == true)
+                    _towBar = value;
+                else
+                    throw new ArgumentOutOfRangeException("Towbar", value, "Commercial bar must have towbar"); 
+
+            }
         }
 
         public override int NoOfSeats {

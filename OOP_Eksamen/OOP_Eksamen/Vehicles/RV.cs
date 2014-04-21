@@ -32,8 +32,10 @@ namespace OOP_Eksamen {
         }
 
         public RV(string inputName, string inputRegNumber, int inputYear,
-                  LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice)
+                  LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice,
+                  HeatingSystemType inputHS)
             : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
+            HeatingSystem = inputHS;
         }
 
         public override LicenceType Licence {
