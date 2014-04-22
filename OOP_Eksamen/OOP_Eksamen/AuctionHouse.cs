@@ -8,6 +8,7 @@ namespace OOP_Eksamen {
     public class AuctionHouse {
         private decimal _balance;
         public Dictionary<int, Vehicle> ForSale = new Dictionary<int, Vehicle>();
+        public List<Vehicle> Sold = new List<Vehicle>();
 
         public decimal Balance {
             get {
@@ -51,7 +52,7 @@ namespace OOP_Eksamen {
             if(ForSale.ContainsKey(auctionNo) && inputSeller == ForSale[auctionNo].VehicleSeller) {
                 int key = inputBuyer.GetHashCode();
                 int fee = 0;
-                //The choosen bidders balance is redeced and all the bidders reserved balance is decresed
+                //The chosen biders balance is reduced and all the bidders reserved balance is decreased
                 inputBuyer.Balance -= ForSale[auctionNo].Bids[key];
                 foreach(Buyer b in ForSale[auctionNo].Biders) {
                     b.ReservedBalance -= ForSale[auctionNo].Bids[b.GetHashCode()];
@@ -74,6 +75,7 @@ namespace OOP_Eksamen {
                 
                 _balance += fee;
                 ForSale[auctionNo].VehicleSeller.Balance += ForSale[auctionNo].Bids[key] - fee;
+                Sold.Add(ForSale[auctionNo]);
                 ForSale.Remove(auctionNo);
                 return true;
             }
