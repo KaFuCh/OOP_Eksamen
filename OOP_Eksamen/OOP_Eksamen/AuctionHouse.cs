@@ -14,10 +14,11 @@ namespace OOP_Eksamen {
                 return _balance;
             }
         }
-        //Two functions 
+        //A function to make the next function take the standard notification method is nothing else is specified
         public int SetSale(Vehicle v, Seller s) {
             return SetSale(v, s, s.RecieveNotification);
         }
+        //A function to set a car for sale
         public int SetSale(Vehicle v, Seller s, Action<Vehicle, decimal> notificationMethod) {
             int AuctionNumber = v.RegNumber.GetHashCode();
             ForSale.Add(AuctionNumber, v);
@@ -27,16 +28,20 @@ namespace OOP_Eksamen {
         }
 
         public bool RecieveBid(Buyer b, int auctionNo, decimal bid) {
+            //If the list contains the car and the balance can be reserved
             if(ForSale.ContainsKey(auctionNo) && b.reserveBalance(bid, auctionNo, this)) {
-                if((!ForSale[auctionNo].Bids.Any() && ForSale[auctionNo].MinPrice <= bid) || (ForSale[auctionNo].MinPrice <= bid && ForSale[auctionNo].Bids.Max(x => x.Value) < bid)) {
+                //If the car does not have any bids and the bid is higher then the minimum price or if there are bids and the new bid is higher
+                if((!ForSale[auctionNo].Bids.Any() && ForSale[auctionNo].MinPrice <= bid) 
+                    || (ForSale[auctionNo].MinPrice <= bid && ForSale[auctionNo].Bids.Max(x => x.Value) < bid)) {
                     ForSale[auctionNo].notify(ForSale[auctionNo], bid);
                 }
+                //If the bids already contains the buyer the bid is changed else the buyer and bid is added
                 if(ForSale[auctionNo].Bids.ContainsKey(b.GetHashCode())) {
                     ForSale[auctionNo].Bids[b.GetHashCode()] = bid;
                 } else {
                     ForSale[auctionNo].Bids.Add(b.GetHashCode(), bid);
+                    ForSale[auctionNo].Biders.Add(b);
                 }
-                ForSale[auctionNo].Biders.Add(b);
                 return true;
             }
             return false;
@@ -46,11 +51,12 @@ namespace OOP_Eksamen {
             if(ForSale.ContainsKey(auctionNo)) {
                 int key = inputBuyer.GetHashCode();
                 int fee = 0;
+                //The choosen bidders balance is redeced and all the bidders reserved balance is decresed
                 inputBuyer.Balance -= ForSale[auctionNo].Bids[key];
                 foreach(Buyer b in ForSale[auctionNo].Biders) {
                     b.ReservedBalance -= ForSale[auctionNo].Bids[b.GetHashCode()];
                 }
-
+                
                 if(ForSale[auctionNo].Bids[key] < 10000)
                     fee = 1900;
                 else if(ForSale[auctionNo].Bids[key] < 50000)
@@ -65,7 +71,7 @@ namespace OOP_Eksamen {
                     fee = 3700;
                 else
                     fee = 4400;
-
+                
                 _balance += fee;
                 ForSale[auctionNo].VehicleSeller.Balance += ForSale[auctionNo].Bids[key] - fee;
                 ForSale.Remove(auctionNo);
