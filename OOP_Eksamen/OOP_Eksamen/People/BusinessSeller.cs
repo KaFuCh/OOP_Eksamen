@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
     public class BusinessSeller : Seller, IBusiness {
-        Business B = new Business(); //Simulated multiple inheritance
+        Business B = new Business(); //simulated multiple inheritance
         //PROPERTIES
         public string CVR{
             get{
@@ -33,6 +33,7 @@ namespace OOP_Eksamen {
             }
         }
 
+        //CONSTRUCTOR
         public BusinessSeller(string inputCVR, int inputZipCode, decimal inputBalance, decimal inputCredit) : base(inputZipCode) {
             CVR = inputCVR;
             ZipCode = inputZipCode;
@@ -43,6 +44,5 @@ namespace OOP_Eksamen {
         public bool CheckCVR(string s) { 
             return B.CheckCVR(s);
         }
-        //public void NotifySeller();
     }
 }

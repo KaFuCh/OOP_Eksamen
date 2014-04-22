@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
     public class BusinessBuyer : Buyer, IBusiness {
-        Business B = new Business(); //Simulated multiple inheritance
+        Business B = new Business(); //simulated multiple inheritance
 
         //PROPERTIES
         private decimal _reservedBalance;
@@ -44,6 +44,8 @@ namespace OOP_Eksamen {
                 B.Credit = value;
             }
         }
+
+        //CONSTRUCTOR
         public BusinessBuyer(string inputCVR, decimal inputBalance, decimal inputCredit) : base(inputBalance) {
             CVR = inputCVR;
             Credit = inputCredit;
@@ -54,9 +56,9 @@ namespace OOP_Eksamen {
             return B.CheckCVR(s);
         }
 
-        public override bool reserveBalance(decimal bid, int auctionNo, AuctionHouse AH) {
+        public override bool reserveBalance(decimal bid, int auctionNo, AuctionHouse AH) { //reserves balance when buyer makes a bid
             int key = base.GetHashCode();
-            if(AH.ForSale[auctionNo].Bids.ContainsKey(key)) { //Has the buyer already bid on the vehicle?
+            if(AH.ForSale[auctionNo].Bids.ContainsKey(key)) { //has the buyer already bid on the vehicle?
                 if(bid > AH.ForSale[auctionNo].Bids[key] && bid + _reservedBalance - AH.ForSale[auctionNo].Bids[key] <= Balance + Credit) {
                     _reservedBalance += bid - AH.ForSale[auctionNo].Bids[key];
                     return true;
