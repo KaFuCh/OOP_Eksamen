@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
     class CarCommercial : Car{
+        //FIELDS
         private uint _loadCapacity;
+
+        //PROPERTIES
         public bool SafetyBar {
             get;
             set;
@@ -22,25 +25,6 @@ namespace OOP_Eksamen {
                     _loadCapacity = value;
             }
         }
-        public CarCommercial(string inputName, string inputRegNumber, int inputYear,
-                             LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice)
-            : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
-            _towBar = true;
-        }
-
-        public override bool TowBar {
-            get {
-                return _towBar;
-            }
-            set {
-                if(value == true)
-                    _towBar = value;
-                else
-                    throw new ArgumentOutOfRangeException("Towbar", value, "Commercial bar must have towbar"); 
-
-            }
-        }
-
         public override int NoOfSeats {
             get {
                 return _noOfSeats;
@@ -64,7 +48,27 @@ namespace OOP_Eksamen {
                     throw new ArgumentOutOfRangeException("Licence", value, "The licence type is not valid for the vehicle type.");
             }
         }
+        public override bool TowBar {
+            get {
+                return _towBar;
+            }
+            set {
+                if(value == true)
+                    _towBar = value;
+                else
+                    throw new ArgumentOutOfRangeException("Towbar", value, "Commercial bar must have towbar");
 
+            }
+        }
+
+        //CONSTRUCTORS
+        public CarCommercial(string inputName, string inputRegNumber, int inputYear,
+                             LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice)
+            : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
+            _towBar = true;
+        }
+
+        //METHODS
         public override string ToString() {
             string output = "------------------------------";
             output += string.Format("\nCommercial car: {0}, {1}", RegNumber, Name);

@@ -6,17 +6,12 @@ using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
     class CarPrivate : Car {
+        //PROPERTIES
         public bool IsoFix {
             get;
             set;
         }
-
-        public CarPrivate(string inputName, string inputRegNumber, int inputYear,
-                          LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice)
-            : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
-        }
-
-        public override int NoOfSeats{
+        public override int NoOfSeats {
             get {
                 return _noOfSeats;
             }
@@ -28,6 +23,13 @@ namespace OOP_Eksamen {
             }
         }
 
+        //CONSTRUCTORS
+        public CarPrivate(string inputName, string inputRegNumber, int inputYear,
+                          LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice)
+            : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
+        }
+
+        //METHODS
         public override string ToString() {
             string output = "------------------------------";
 

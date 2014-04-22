@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
     public class RV : Vehicle {
+        //ENUMS
         public enum HeatingSystemType {
             No,
             Gas,
@@ -13,6 +14,7 @@ namespace OOP_Eksamen {
             Oil
         }
 
+        //PROPERTIES
         public uint NoOfSeats {
             get;
             set;
@@ -30,14 +32,6 @@ namespace OOP_Eksamen {
             get;
             set;
         }
-
-        public RV(string inputName, string inputRegNumber, int inputYear,
-                  LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice,
-                  HeatingSystemType inputHS)
-            : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
-            HeatingSystem = inputHS;
-        }
-
         public override LicenceType Licence {
             get {
                 return _licence;
@@ -72,6 +66,15 @@ namespace OOP_Eksamen {
             }
         }
 
+        //CONSTRUCTORS
+        public RV(string inputName, string inputRegNumber, int inputYear,
+                  LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice,
+                  HeatingSystemType inputHS)
+            : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
+            HeatingSystem = inputHS;
+        }
+
+        //METHODS
         public override string ToString() {
             string output = "------------------------------";
 

@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
     public abstract class Car : Vehicle {
+        //FIELDS
         protected int _noOfSeats;
         protected int[] _trunkDimensions = new int[3];
 
-        public virtual int NoOfSeats {
+        //PROPERTIES
+        public abstract int NoOfSeats { //Overridden in subtypes
             get;
             set;
         }
@@ -22,12 +24,6 @@ namespace OOP_Eksamen {
                 _trunkDimensions = value;
             }
         }
-
-        public Car(string inputName, string inputRegNumber, int inputYear,
-                   LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice)
-            : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
-        }
-
         public override LicenceType Licence {
             get {
                 return _licence;
@@ -47,6 +43,12 @@ namespace OOP_Eksamen {
                 else
                     throw new ArgumentOutOfRangeException("EngineSize", value, "The engine size is not valid for the vehicle type.");
             }
+        }
+
+        //CONSTRUCTORS
+        public Car(string inputName, string inputRegNumber, int inputYear,
+                   LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice)
+            : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
         }
     }
 }

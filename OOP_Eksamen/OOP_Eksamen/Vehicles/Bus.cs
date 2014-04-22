@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
     public class Bus : Vehicle {
+        //PROPERTIES
         public uint NoOfSeats {
             get;
             set;
@@ -30,14 +31,6 @@ namespace OOP_Eksamen {
             get;
             set;
         }
-
-        public Bus(string inputName, string inputRegNumber, int inputYear,
-                       LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice,
-                       uint inputWeight)
-            : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
-            Weight = inputWeight;
-        }
-
         public override LicenceType Licence {
             get {
                 return _licence;
@@ -49,7 +42,6 @@ namespace OOP_Eksamen {
                     throw new ArgumentOutOfRangeException("Licence", value, "The licence type is not valid for the vehicle type.");
             }
         }
-
         public override double EngineSize {
             set {
                 if(value >= 4.2 && value <= 15)
@@ -58,7 +50,6 @@ namespace OOP_Eksamen {
                     throw new ArgumentOutOfRangeException("EngineSize", value, "The engine size is not valid for the vehicle type.");
             }
         }
-
         public override Vehicle.FuelType Fuel {
             get {
                 return _fuel;
@@ -71,6 +62,15 @@ namespace OOP_Eksamen {
             }
         }
 
+        //CONSTRUCTORS
+        public Bus(string inputName, string inputRegNumber, int inputYear,
+                       LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice,
+                       uint inputWeight)
+            : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
+            Weight = inputWeight;
+        }
+
+        //METHODS
         public override string ToString() {
             string output = "------------------------------";
 

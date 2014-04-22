@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
     public class Truck : Vehicle {
+        //PROPERTIES
         public int LoadCapacity {
             get;
             set;
         }
-        public int Height {
+        public uint Height {
             get;
             set;
         }
@@ -18,18 +19,21 @@ namespace OOP_Eksamen {
             get;
             set;
         }
-        public int Length {
+        public uint Length {
             get;
             set;
         }
-
-        public Truck(string inputName, string inputRegNumber, int inputYear,
-                     LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice,
-                     uint inputWeight)
-            : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
-            Weight = inputWeight;
+        public override Vehicle.FuelType Fuel {
+            get {
+                return _fuel;
+            }
+            set {
+                if(value == FuelType.Diesel)
+                    _fuel = value;
+                else
+                    throw new ArgumentOutOfRangeException("Fuel", value, "Trucks must be fueled by diesel");
+            }
         }
-
         public override LicenceType Licence {
             get {
                 return _licence;
@@ -41,7 +45,24 @@ namespace OOP_Eksamen {
                     throw new ArgumentOutOfRangeException("Licence", value, "The licence type is not valid for the vehicle type.");
             }
         }
+        public override double EngineSize {
+            set {
+                if(value >= 4.2 && value <= 15)
+                    _engineSize = value;
+                else
+                    throw new ArgumentOutOfRangeException("EngineSize", value, "The engine size is not valid for the vehicle type.");
+            }
+        }
 
+        //CONSTRUCTORS
+        public Truck(string inputName, string inputRegNumber, int inputYear,
+                     LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice,
+                     uint inputWeight)
+            : base(inputName, inputRegNumber, inputYear, inputLicence, inputFuel, inputMinPrice) {
+            Weight = inputWeight;
+        }
+
+        //METHODS
         public override string ToString() {
             string output = "------------------------------";
 
@@ -78,27 +99,6 @@ namespace OOP_Eksamen {
             output += "\n------------------------------";
 
             return output;
-        }
-
-        public override Vehicle.FuelType Fuel {
-            get {
-                return _fuel;
-            }
-            set {
-                if(value == FuelType.Diesel)
-                    _fuel = value;
-                else
-                    throw new ArgumentOutOfRangeException("Fuel", value, "Trucks must be fueled by diesel");
-            }
-        }
-
-        public override double EngineSize {
-            set {
-                if(value >= 4.2 && value <= 15)
-                    _engineSize = value;
-                else
-                    throw new ArgumentOutOfRangeException("EngineSize", value, "The engine size is not valid for the vehicle type.");
-            }
         }
     }
 }

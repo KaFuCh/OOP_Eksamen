@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
     public abstract class Vehicle {
+        //ENUMS
         public enum EnergyClassType {
             A,
             B,
@@ -21,14 +22,16 @@ namespace OOP_Eksamen {
             D,
             DE
         }
-
         public enum FuelType {
             Petrol,
             Diesel
         }
 
+        //FIELDS
         protected LicenceType _licence;
         protected FuelType _fuel;
+        public Dictionary<int, decimal> Bids = new Dictionary<int, decimal>();
+        public List<Buyer> Biders = new List<Buyer>();
         protected string _regNumber;
         protected string _name;
         protected decimal _minPrice;
@@ -39,7 +42,8 @@ namespace OOP_Eksamen {
         protected uint _initPrice;
         protected bool _towBar;
 
-        public Action<Vehicle, decimal> notify {
+        //PROPERTIES
+        public Action<Vehicle, decimal> notify { //Ability to change notification method
             get;
             set;
         }
@@ -48,8 +52,6 @@ namespace OOP_Eksamen {
             get;
             set;
         }
-        public Dictionary<int, decimal> Bids = new Dictionary<int, decimal>();
-        public List<Buyer> Biders = new List<Buyer>();
 
         public decimal MinPrice {
             get {
@@ -165,7 +167,8 @@ namespace OOP_Eksamen {
                 return calcEnergyClass(1.0);
             }
         }
-        //CONSTRUCTOR
+
+        //CONSTRUCTORS
         public Vehicle(string inputName, string inputRegNumber, int inputYear,
                        LicenceType inputLicence, FuelType inputFuel, decimal inputMinPrice) {
             Name = inputName;
@@ -177,7 +180,6 @@ namespace OOP_Eksamen {
         }
 
         //METHODS
-
         protected EnergyClassType calcEnergyClass(double factor) {
             EnergyClassType res = new EnergyClassType();
             double kpl = _kmPrLiter*factor; 
