@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
-    public interface IPrivate{
+    public interface IPrivate { //interface used for simulated multiple inheritance
         string CPR {
             get;
             set;

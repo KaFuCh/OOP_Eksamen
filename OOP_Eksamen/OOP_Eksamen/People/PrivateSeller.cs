@@ -16,7 +16,6 @@ namespace OOP_Eksamen {
                 P.CPR = value;
             }
         }
-
         public override decimal Balance {
             get {
                 return P.Balance;
@@ -26,6 +25,7 @@ namespace OOP_Eksamen {
             }
         }
 
+        //CONSTRUCTORS
         public PrivateSeller(string inputCPR, int inputZipCode, decimal inputBalance) : base(inputZipCode) {
             CPR = inputCPR;
             Balance = inputBalance;
@@ -35,6 +35,5 @@ namespace OOP_Eksamen {
         public bool CheckCPR(string cpr) {
             return P.CheckCPR(cpr);
         }
-        //public void NotifySeller();
     }
 }

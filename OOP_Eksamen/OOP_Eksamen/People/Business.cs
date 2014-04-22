@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace OOP_Eksamen {
     public class Business : IBusiness {
+        //FIELDS
         private string _cvr;
         private decimal _balance;
 
+        //PROPERTIES
         public string CVR {
             get {
                 return _cvr;
@@ -30,13 +32,6 @@ namespace OOP_Eksamen {
             }
         }
 
-        public void pay(decimal cost) {
-            if(_balance + Credit - cost >= 0)
-                _balance -= cost;
-            else
-                throw new ArgumentOutOfRangeException("Balance", cost, "Insuffient funds");
-        }
-
         public decimal Credit {
             get;
             set;
@@ -46,9 +41,8 @@ namespace OOP_Eksamen {
         public bool CheckCVR(string cvr) {
             int res = 0;
             for(int i = 0; i < cvr.Count() - 1; i++)
-                res += (cvr[cvr.Count() - i - 2] - '0') * ((i % 6) + 2);
-
-            return (11 - res % 11 == cvr[cvr.Count() - 1] - '0');
+                res += (cvr[cvr.Count() - i - 2] - '0') * ((i % 6) + 2); //sum all digits with appropriate factors
+            return (11 - res % 11 == cvr[cvr.Count() - 1] - '0'); //true if control digit is valid
         }
     }
 }
