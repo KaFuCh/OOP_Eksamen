@@ -47,8 +47,8 @@ namespace OOP_Eksamen {
             return false;
         }
 
-        public bool AcceptBid(Buyer inputBuyer, int auctionNo) {
-            if(ForSale.ContainsKey(auctionNo)) {
+        public bool AcceptBid(Seller inputSeller, Buyer inputBuyer, int auctionNo) {
+            if(ForSale.ContainsKey(auctionNo) && inputSeller == ForSale[auctionNo].VehicleSeller) {
                 int key = inputBuyer.GetHashCode();
                 int fee = 0;
                 //The choosen bidders balance is redeced and all the bidders reserved balance is decresed

@@ -38,7 +38,7 @@ namespace OOP_Eksamen {
                     Console.WriteLine("\nBusiness buyers balance is {0:C}, credit is {1:C}\nand the recerved balance is {2:C}", buyers[0].Balance, ((BusinessBuyer)buyers[0]).Credit, buyers[0].ReservedBalance);
                     testAuctionHouse.RecieveBid(buyers[0], testTruckKey, 500000);
                     Console.WriteLine("\nBusiness buyers balance is {0:C}, credit is {1:C}\nand the recerved balance is {2:C}", buyers[0].Balance, ((BusinessBuyer)buyers[0]).Credit, buyers[0].ReservedBalance);
-                    testAuctionHouse.AcceptBid(buyers[0], testTruckKey);
+                    testAuctionHouse.AcceptBid(sellers[0], buyers[0], testTruckKey);
                     Console.WriteLine("\nAccepting bid");
                     Console.WriteLine("\nBusiness buyers balance is {0:C}, credit is {1:C}\nand the recerved balance is {2:C}", buyers[0].Balance, ((BusinessBuyer)buyers[0]).Credit, buyers[0].ReservedBalance);
                     Console.WriteLine("\nAuctions House's balance is {0:C}", testAuctionHouse.Balance);
@@ -53,7 +53,7 @@ namespace OOP_Eksamen {
                     testAuctionHouse.RecieveBid(buyers[0], testCarPrivateKey, 40000);
                     Console.WriteLine("\nBusiness buyers balance is {0:C}, credit is {1:C}\nand the recerved balance is {2:C}", buyers[0].Balance, ((BusinessBuyer)buyers[0]).Credit, buyers[0].ReservedBalance);
                     Console.WriteLine("\nPrivate buyers balance is {0:C} and the recerved balance is {1:C}", buyers[1].Balance, buyers[1].ReservedBalance);
-                    testAuctionHouse.AcceptBid(buyers[0], testCarPrivateKey);
+                    testAuctionHouse.AcceptBid(sellers[1], buyers[0], testCarPrivateKey);
                     Console.WriteLine("\nAccepting bid");
                     Console.WriteLine("\nBusiness buyers balance is {0:C}, credit is {1:C}\nand the recerved balance is {2:C}", buyers[0].Balance, ((BusinessBuyer)buyers[0]).Credit, buyers[0].ReservedBalance);
                     Console.WriteLine("\nPrivate buyers balance is {0:C} and the recerved balance is {1:C}", buyers[1].Balance, buyers[1].ReservedBalance);
