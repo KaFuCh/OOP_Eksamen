@@ -14,11 +14,10 @@ namespace OOP_Eksamen {
                 return _balance;
             }
         }
-
+        //Two functions 
         public int SetSale(Vehicle v, Seller s) {
             return SetSale(v, s, s.RecieveNotification);
         }
-
         public int SetSale(Vehicle v, Seller s, Action<Vehicle, decimal> notificationMethod) {
             int AuctionNumber = v.RegNumber.GetHashCode();
             ForSale.Add(AuctionNumber, v);
