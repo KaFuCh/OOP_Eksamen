@@ -62,6 +62,10 @@ namespace OOP_Eksamen {
                     Console.WriteLine("\nPrivate buyers:\n  Balance: {0:C}\n  Reserved balance: {1:C}", buyers[1].Balance, buyers[1].ReservedBalance);
                     Console.WriteLine("\nPrivate sellers balance is {0:C}", sellers[1].Balance);
                     Console.WriteLine("\nAuctions House's balance is {0:C}", testAuctionHouse.Balance);
+                    Console.WriteLine("\nSold cars:");
+                    foreach(Vehicle v in testAuctionHouse.Sold) {
+                        Console.WriteLine(v);
+                    }
                     break;
                 case '2':
                     Console.WriteLine("\nSearch examples:\n" +
