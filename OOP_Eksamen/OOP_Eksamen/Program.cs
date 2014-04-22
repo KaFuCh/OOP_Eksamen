@@ -115,7 +115,7 @@ namespace OOP_Eksamen {
                         foreach(Vehicle v in testAuctionHouse.ForSale.Values) {
                             Console.WriteLine(v.EnergyClass);
                         }
-                        Console.WriteLine("\nAverage energy Class: " + testAuctionHouse.avrageEnergyClassType());
+                        Console.WriteLine("\nAverage energy Class: " + testAuctionHouse.averageEnergyClassType());
                         break;
                 }
                 foreach(Vehicle v in sortedList) {

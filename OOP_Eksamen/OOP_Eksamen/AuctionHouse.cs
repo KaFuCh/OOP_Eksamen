@@ -99,8 +99,8 @@ namespace OOP_Eksamen {
             return ForSale.Values.Where(x => x.VehicleSeller.ZipCode <= initZipCode + initZipCode && x.VehicleSeller.ZipCode >= initZipCode - zipCodeRange).ToList();
         }
 
-        public EnergyClassType avrageEnergyClassType() {
-            return (EnergyClassType)Math.Round(ForSale.Values.Average(x => (int)x.EnergyClass));
+        public Vehicle.EnergyClassType averageEnergyClassType() {
+            return (Vehicle.EnergyClassType)Math.Round(ForSale.Values.Average(x => (int)x.EnergyClass));
         }
     }
 }
