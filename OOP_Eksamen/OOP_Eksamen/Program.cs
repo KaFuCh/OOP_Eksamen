@@ -14,7 +14,7 @@ namespace OOP_Eksamen {
 
         public static void testExample() {
             AuctionHouse testAuctionHouse = new AuctionHouse();
-            List<Seller> sellers = new List<Seller> { new BusinessSeller("55133018", 8300, 1000000, 500000), new PrivateSeller("0708912247", 9000, 100000) };
+            List<Seller> sellers = new List<Seller> { new BusinessSeller("55133018", 8300, 0, 0), new PrivateSeller("0708912247", 9000, 0) };
             List<Buyer> buyers = new List<Buyer> { new BusinessBuyer("32264328", 300000, 300000), new PrivateBuyer("1102931129", 40000) };
 
             int testBusKey = testAuctionHouse.SetSale(new Bus("Mercedes Benz Travego", "AB87232", 2005, Vehicle.LicenceType.D, Vehicle.FuelType.Diesel, 120000, 8000), sellers[0]);
@@ -35,28 +35,32 @@ namespace OOP_Eksamen {
             switch(key) {
                 case '1':
                     //BUSINESS BUYER BUYS FROM BUSINESS SELLER
-                    Console.WriteLine("\nBusiness buyers balance is {0:C}, credit is {1:C}\nand the recerved balance is {2:C}", buyers[0].Balance, ((BusinessBuyer)buyers[0]).Credit, buyers[0].ReservedBalance);
+                    Console.WriteLine("\nBusiness buyer:\n  Balance; {0:C}\n  Credit: {1:C}\n  Recerved balance: {2:C}", buyers[0].Balance, ((BusinessBuyer)buyers[0]).Credit, buyers[0].ReservedBalance);
                     testAuctionHouse.RecieveBid(buyers[0], testTruckKey, 500000);
-                    Console.WriteLine("\nBusiness buyers balance is {0:C}, credit is {1:C}\nand the recerved balance is {2:C}", buyers[0].Balance, ((BusinessBuyer)buyers[0]).Credit, buyers[0].ReservedBalance);
+                    Console.WriteLine("\nBusiness buyer:\n  Balance; {0:C}\n  Credit: {1:C}\n  Recerved balance: {2:C}", buyers[0].Balance, ((BusinessBuyer)buyers[0]).Credit, buyers[0].ReservedBalance);
+                    Console.WriteLine("\nBusiness seller:\n  Balance: {0:C}", sellers[0].Balance);
                     testAuctionHouse.AcceptBid(sellers[0], buyers[0], testTruckKey);
                     Console.WriteLine("\nAccepting bid");
-                    Console.WriteLine("\nBusiness buyers balance is {0:C}, credit is {1:C}\nand the recerved balance is {2:C}", buyers[0].Balance, ((BusinessBuyer)buyers[0]).Credit, buyers[0].ReservedBalance);
-                    Console.WriteLine("\nAuctions House's balance is {0:C}", testAuctionHouse.Balance);
+                    Console.WriteLine("\nBusiness buyer:\n  Balance; {0:C}\n  Credit: {1:C}\n  Recerved balance: {2:C}", buyers[0].Balance, ((BusinessBuyer)buyers[0]).Credit, buyers[0].ReservedBalance);
+                    Console.WriteLine("\nBusiness seller:\n  Balance: {0:C}", sellers[0].Balance);
+                    Console.WriteLine("\nAuctions House:\n  Balance: {0:C}", testAuctionHouse.Balance);
 
                     //PRIVATE BUYER BUYS FROM PRIVATE SELLER
-                    Console.WriteLine("\nPrivate buyers balance is {0:C} and the recerved balance is {1:C}", buyers[1].Balance, buyers[1].ReservedBalance);
+                    Console.WriteLine("\nPrivate buyer:\n  Balance: {0:C}\n  Recerved balance: {1:C}", buyers[1].Balance, buyers[1].ReservedBalance);
                     testAuctionHouse.RecieveBid(buyers[1], testCarPrivateKey, 32000);
-                    Console.WriteLine("\nPrivate buyers balance is {0:C} and the recerved balance is {1:C}", buyers[1].Balance, buyers[1].ReservedBalance);
-
+                    Console.WriteLine("\nPrivate buyer:\n  Balance: {0:C}\n  Recerved balance: {1:C}", buyers[1].Balance, buyers[1].ReservedBalance);
+                    
                     //BUSINESS BUYER BUYS FROM PRIVATE SELLER
-                    Console.WriteLine("\nBusiness buyers balance is {0:C}, credit is {1:C}\nand the recerved balance is {2:C}", buyers[0].Balance, ((BusinessBuyer)buyers[0]).Credit, buyers[0].ReservedBalance);
+                    Console.WriteLine("\nBusiness buyers:\n  Balance: {0:C}\n  Credit: {1:C}\n  Recerved balance: {2:C}", buyers[0].Balance, ((BusinessBuyer)buyers[0]).Credit, buyers[0].ReservedBalance);
                     testAuctionHouse.RecieveBid(buyers[0], testCarPrivateKey, 40000);
-                    Console.WriteLine("\nBusiness buyers balance is {0:C}, credit is {1:C}\nand the recerved balance is {2:C}", buyers[0].Balance, ((BusinessBuyer)buyers[0]).Credit, buyers[0].ReservedBalance);
-                    Console.WriteLine("\nPrivate buyers balance is {0:C} and the recerved balance is {1:C}", buyers[1].Balance, buyers[1].ReservedBalance);
+                    Console.WriteLine("\nBusiness buyers:\n  Balance: {0:C}\n  Credit: {1:C}\n  Recerved balance: {2:C}", buyers[0].Balance, ((BusinessBuyer)buyers[0]).Credit, buyers[0].ReservedBalance);
+                    Console.WriteLine("\nPrivate buyers:\n  Balance: {0:C}\n  Recerved balance: {1:C}", buyers[1].Balance, buyers[1].ReservedBalance);
+                    Console.WriteLine("\nPrivate sellers:\n  Balance: {0:C}", sellers[1].Balance);
                     testAuctionHouse.AcceptBid(sellers[1], buyers[0], testCarPrivateKey);
                     Console.WriteLine("\nAccepting bid");
-                    Console.WriteLine("\nBusiness buyers balance is {0:C}, credit is {1:C}\nand the recerved balance is {2:C}", buyers[0].Balance, ((BusinessBuyer)buyers[0]).Credit, buyers[0].ReservedBalance);
-                    Console.WriteLine("\nPrivate buyers balance is {0:C} and the recerved balance is {1:C}", buyers[1].Balance, buyers[1].ReservedBalance);
+                    Console.WriteLine("\nBusiness buyers:\n  Balance: {0:C}\n  Credit: {1:C}\n  Recerved balance: {2:C}", buyers[0].Balance, ((BusinessBuyer)buyers[0]).Credit, buyers[0].ReservedBalance);
+                    Console.WriteLine("\nPrivate buyers:\n  Balance: {0:C}\n  Recerved balance: {1:C}", buyers[1].Balance, buyers[1].ReservedBalance);
+                    Console.WriteLine("\nPrivate sellers balance is {0:C}", sellers[1].Balance);
                     Console.WriteLine("\nAuctions House's balance is {0:C}", testAuctionHouse.Balance);
                     break;
                 case '2':
