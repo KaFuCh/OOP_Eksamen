@@ -182,7 +182,7 @@ namespace OOP_Eksamen {
         //METHODS
         protected EnergyClassType calcEnergyClass(double factor) {
             EnergyClassType res = new EnergyClassType();
-            double kpl = _kmPrLiter*factor; 
+            double kpl = _kmPrLiter*factor;
             if(_year < 2010) {
                 if(_fuel == FuelType.Diesel) {
                     if(kpl >= 23)

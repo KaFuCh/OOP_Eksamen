@@ -1,3 +1,0 @@
-﻿ToString() skal overskrives for alle køretøjssubklasser
-
-Vi antager at brugergrænsefladen skal være interaktiv, og laver af denne grund et menusystem
